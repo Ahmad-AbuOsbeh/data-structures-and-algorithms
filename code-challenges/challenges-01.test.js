@@ -169,7 +169,7 @@ describe('Testing challenge 6', () => {
 const createList = (availableItems) => {
   let newArr6=[];
   availableItems.forEach(value=>{
-    if (value.available==true) {
+    if (value.available===true) {
       newArr6.push(value.name);
     }
   });
@@ -202,20 +202,16 @@ xdescribe('Testing challenge 7', () => {
 const fizzbuzz = (arr) => {
   let newArr7=[];
   arr.forEach(value =>{
-    if ((value%3)===0 || (value%5)===0) {
+    // if ((value%3)===0 || (value%5)===0) {
+    if ((value%3)===0 && (value%5)===0) {
+      newArr7.push('Fizz Buzz');
+    }
+    else if ((value%3)===0 ) {
+      newArr7.push('Fizz');
 
-      if ((value%3)===0 ) {
-        newArr7.push('Fizz');
-      }
-      if ((value%5)===0) {
-        newArr7.push('Buzz');
-      }
-      
-
-      if ((value%3)===0 && (value%5)===0) {
-        newArr7.push('Fizz Buzz');
-      }
-    }  else  {
+    } else if ((value%5)===0) {
+      newArr7.push('Buzz');
+    }else {
       newArr7.push(value);
     }
 
