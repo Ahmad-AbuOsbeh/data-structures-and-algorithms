@@ -5,13 +5,13 @@ CHALLENGE 1 - Review
 
 Write a function named transformToLis that, given an object, returns an array of the key value pairs as html list items.
 
-For example: 
+For example:
 {
   name: 'bob',
   age: 32
 }
 
-Becomes: 
+Becomes:
 [
 <li>name: bob</li>,
 <li>age: 32</li>
@@ -27,7 +27,14 @@ describe('Testing challenge 1', () => {
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj){
-  
+  let newArr=[];
+  let objToArr = Object.entries(obj);
+  objToArr.map(item=>{
+    newArr.push(`<li>${item[0]}: ${item[1]}</li>`);
+  });
+
+
+  return newArr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,10 +45,31 @@ Write a function named count that, given an integer and an array of arrays, uses
 Note: You might need to use the same method more than once.
 
 For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
+
+describe('Testing challenge 2', () => {
+  test('It should return the number of times the input is in the nested arrays', () => {
+    expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
+    expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
+    expect(count(12, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(0);
+  });
+  test('It should work on empty arrays', () => {
+    expect(count(5, [[1, 3, 5, 7, 9], [], [5, 5, 5], [1, 2, 3], []])).toStrictEqual(4);
+    expect(count(5, [])).toStrictEqual(0);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  let times=0;
+
+  input.map(item=>{
+    item.map(value=>{
+      if (value==target) {
+        times++;
+      }
+    });
+  });
+  return times;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,10 +80,26 @@ Write a function that, given an array of integer arrays as input, calculates the
 You may want to use filter, map, or reduce for this problem, but are not required to. You may need to use the same method more than once.
 
 For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
+
+describe('Testing challenge 3', () => {
+  test('It should add all the numbers in the arrays', () => {
+    const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
+
+    expect(totalSum(nums)).toStrictEqual(66);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  let times=0;
+
+  input.map(item=>{
+    item.map(value=>{
+      times+=value;
+
+    });
+  });
+  return times;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,14 +112,38 @@ This function should first remove any elements that are not numbers or are not d
 This function should then raise 2 to the power of the resulting numbers, returning an array of arrays.
 
 For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
+
+describe('Testing challenge 4', () => {
+  test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
+    expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]])).toStrictEqual([[1024, 1048576, 32], [32], [1024]]);
+  });
+
+  test('It should return an empty array if none of the numbers are divisible by five', () => {
+    expect(divisibleByFiveTwoToThePower([[1, 2, 3], [5, 10, 15]])).toStrictEqual([[], [32, 1024, 32768]]);
+  });
+
+  test('It should return an empty array if the values are not numbers', () => {
+    expect(divisibleByFiveTwoToThePower([['one', 'two', 'five'], ['5', '10', '15'], [5]])).toStrictEqual([[], [], [32]]);
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  let newArr=[];
+  input.map((item,index)=>{
+    newArr.push([]);
+    item.map(value=>{
+      if (typeof(value)==='number'&& value%5==0) {
+        let updValue= Math.pow(2, value);
+        newArr[index].push(updValue);
+      }
+    });
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 
+CHALLENGE 5
 
 Write a function named findMaleAndFemale that, given the Star Wars data, below,
 returns the names of the characters whose gender is either male or female.
@@ -83,6 +151,13 @@ returns the names of the characters whose gender is either male or female.
 The names should be combined into a single string with each character name separated by "and".
 
 For example, "C-3PO and Luke Skywalker".
+
+describe('Testing challenge 5', () => {
+  test('It should return only characters that are male or female', () => {
+    expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
+    expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 let starWarsData = [{
@@ -137,17 +212,46 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  let newArr=[];
+  data.map(item=>{
+    if (item.gender=='male'||item.gender=='female') {
+      newArr.push(item.name);
+    }
+  });
+  let joinedArr= newArr.join(' and ');
+  return joinedArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 
+CHALLENGE 6
 
 Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the shortest character.
+
+describe('Testing challenge 6', () => {
+  test('It should return the name of the shortest character', () => {
+    expect(findShortest(starWarsData)).toStrictEqual('R2-D2');
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  let x =0;
+  let newArr= data.sort((a,b)=>{
+    if (parseInt(a.height) > parseInt(b.height)) {
+      return 1;
+    }
+    else if (parseInt(a.height) <parseInt(b.height)) {
+      return -1;
+    }
+    else {
+      return 0;
+    }
+  });
+
+  return newArr[0].name;
+  
+
 };
 
 /* ------------------------------------------------------------------------------------------------
