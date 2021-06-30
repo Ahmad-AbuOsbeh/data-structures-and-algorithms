@@ -16,4 +16,12 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 
 ## code challange 1
 
-[README.md](./401-challange1/README.md)
+[README.md](./401-codechallanges/challange01/README.md)
+
+## code challange 2
+
+[README.md](./401-codechallanges/challange02/README.md)
+
+## code challange 3
+
+[README.md](./401-codechallanges/challange03/README.md)
