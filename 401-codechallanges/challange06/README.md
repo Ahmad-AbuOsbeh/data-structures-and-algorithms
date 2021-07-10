@@ -1,8 +1,9 @@
 # Singly Linked List
 
-- add includes and tostring methods
-- includes will check a value if it exists in a linked list or not
-- to string will return the linked list as a string contains all values
+- add append, insert before, and insert after methods
+- append will add node to the end of the list
+- insert before will add node before certain node in the list
+- insert after will add node after certain node in the list
 
 ## Challenge
 
@@ -12,7 +13,7 @@
 
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
-![challange05](./images/challange05.jpg)
+![challange06](./images/challange06.jpg)
 
 ## API
 
