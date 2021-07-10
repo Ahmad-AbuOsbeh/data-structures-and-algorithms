@@ -1,19 +1,20 @@
 # Singly Linked List
 
-<!-- Short summary or background information -->
+- create Palindrome method that will check the list if it is palindrome or not
 
 ## Challenge
 
 <!-- Description of the challenge -->
 
-**k-th value from the end of a linked list.**
+**Palindrome method**
 
 ## Approach & Efficiency
 
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
-<!-- ![challange07](./images/challange07.jpg) -->
-<img src="images/challange07.jpg" />
+![challange09](./images/challange09.jpg)
+
+<!-- <img src="images/challange07.jpg" /> -->
 
 ## API
 

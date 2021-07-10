@@ -1,9 +1,8 @@
 "use strict";
 const LinkedList = require("../linked-list");
 describe("linked-list Palindrome ", () => {
-  it("returns true or false if inputted linked list is Palindrome or not", () => {
+  it("1.returns true for Palindrome list", () => {
     let Inputlist = new LinkedList();
-    let ll = new LinkedList();
 
     Inputlist.insert("t");
     Inputlist.insert("a");
@@ -13,9 +12,20 @@ describe("linked-list Palindrome ", () => {
     Inputlist.insert("a");
     Inputlist.insert("t");
 
-    console.log("Inputlist", Inputlist);
-    console.log("ll", ll);
+    expect(Inputlist.checkPalindrome()).toBe(true);
+  });
 
-    expect(ll.checkPalindrome(Inputlist)).toBe("true");
+  it("2.returns false for non-Palindrome list", () => {
+    let Inputlist = new LinkedList();
+
+    Inputlist.insert("h");
+    Inputlist.insert("a");
+    Inputlist.insert("c");
+    Inputlist.insert("o");
+    Inputlist.insert("c");
+    Inputlist.insert("u");
+    Inputlist.insert("s");
+
+    expect(Inputlist.checkPalindrome()).toBe(false);
   });
 });
