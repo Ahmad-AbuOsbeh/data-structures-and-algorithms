@@ -4,7 +4,6 @@ describe("linked-list tests- Challange 06 ", () => {
   it("1.Can successfully add a node to the end of the linked list", () => {
     let ll = new LinkedList();
     ll.append("10");
-    // ll.tostring();
     expect(ll.tostring()).toEqual("{10} ->NULL");
   });
 
@@ -26,64 +25,36 @@ describe("linked-list tests- Challange 06 ", () => {
     ll.insert("3");
     ll.insert("4");
     ll.insertBefore("3", "a");
-    expect(ll.tostring()).toEqual("a");
+    expect(ll.tostring()).toEqual("{4} ->{a} ->{3} ->{2} ->{1} ->NULL");
   });
 
-  // it("Can properly insert multiple nodes into the linked list", () => {
-  //   let ll = new LinkedList();
-  //   ll.insert("a");
-  //   ll.insert("b");
-  //   ll.insert("c");
-  //   ll.insert("d");
-
-  //   expect(ll.head.value).toEqual("d");
-  // });
-});
-
-xdescribe("tests group 2", () => {
-  it("Can properly return a collection of all the values that exist in the linked list", () => {
+  it("4.Can successfully insert a node before the first node of a linked list", () => {
     let ll = new LinkedList();
-    ll.insert("a");
-    ll.insert("b");
-    ll.insert("c");
-    // ll.insert('test4');
-    // console.log('ll', ll);
-    // let newList = new LinkedList();
-    // console.log('newlist', newList);
-
-    // const result = ll.includes('test1');
-
-    expect(ll.includes("a")).toEqual(true);
+    ll.insert("1");
+    ll.insert("2");
+    ll.insert("3");
+    ll.insert("4");
+    ll.insertBefore("4", "a");
+    expect(ll.tostring()).toEqual("{a} ->{4} ->{3} ->{2} ->{1} ->NULL");
   });
 
-  it("Will return false when searching for a value in the linked list that does not exist", () => {
+  it("5.Can successfully insert after a node in the middle of the linked list", () => {
     let ll = new LinkedList();
-    ll.insert("test1");
-    ll.insert("test2");
-    ll.insert("test3");
-    ll.insert("test4");
-    // console.log('ll', ll);
-    // let newList = new LinkedList();
-    // console.log('newlist', newList);
-    // ll.tostring();
-    // const result = ll.includes('test1');
-
-    expect(ll.includes("test6")).toEqual(false);
+    ll.insert("1");
+    ll.insert("2");
+    ll.insert("3");
+    ll.insert("4");
+    ll.insertAfter("3", "a");
+    expect(ll.tostring()).toEqual("{4} ->{3} ->{a} ->{2} ->{1} ->NULL");
   });
 
-  it("Can properly return a collection of all the values that exist in the linked list", () => {
+  it("6.Can successfully insert a node after the last node of the linked list", () => {
     let ll = new LinkedList();
-    ll.insert("test1");
-    ll.insert("test2");
-    ll.insert("test3");
-    // ll.insert('test4');
-    // console.log('ll', ll);
-    // let newList = new LinkedList();
-    // console.log('newlist', newList);
-
-    // const result = ll.includes('test1');
-    expect(ll.tostring()).toEqual("{test3} ->{test2} ->{test1} ->NULL");
-
-    // expect(ll.includes('test1')).toEqual(true);
+    ll.insert("1");
+    ll.insert("2");
+    ll.insert("3");
+    ll.insert("4");
+    ll.insertAfter("1", "a");
+    expect(ll.tostring()).toEqual("{4} ->{3} ->{2} ->{1} ->{a} ->NULL");
   });
 });

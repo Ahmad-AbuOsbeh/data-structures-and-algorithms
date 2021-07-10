@@ -8,19 +8,17 @@ class LinkedList {
 
   insert(value) {
     const node = new Node(value);
-    // if (!this.head) {
-    //   this.head = node;
-    //   // console.log("this.head.next", this.head.next);
-    // }
-    // node.next = this.head;
-    // this.head = node;
-    // console.log("this.head.next", this.head.next);
-
-    // console.log("this.head", this.head);
-    if (this.head) {
+    if (!this.head) {
+      this.head = node;
+    } else {
       node.next = this.head;
+      this.head = node;
     }
-    this.head = node;
+
+    // if (this.head) {
+    //   node.next = this.head;
+    // }
+    // this.head = node;
   }
 
   append(value) {
@@ -39,58 +37,49 @@ class LinkedList {
   insertBefore(value, addValue) {
     const node = new Node(addValue);
     let currentNode = this.head;
-    console.log("hello from insert before");
-
-    while (currentNode) {
-      console.log("hello from insert before, while");
-      console.log("currentNode.value", currentNode.value);
-      console.log("currentNode.value == value", currentNode.value == value);
-
-      if (currentNode.value == value) {
-        console.log("hello from insert before, if");
-        console.log(addValue);
-        node.next = currentNode;
-        currentNode = node;
-        // currentNode.next = currentNode;
-        // currentNode.value = addValue;
-        // return;
-      } else {
-        currentNode = currentNode.next;
-      }
-      // currentNode = currentNode.next;
+    if (currentNode.value == value) {
+      node.next = currentNode;
+      this.head = node;
+      return;
     }
-    return this.tostring();
-  }
+    while (currentNode) {
+      if (currentNode.next.value == value) {
+        node.next = currentNode.next;
+        currentNode.next = node;
+        break;
+      }
 
+      currentNode = currentNode.next;
+    }
+  }
+  insertAfter(value, addValue) {
+    let node = new Node(addValue);
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value == value) {
+        node.next = currentNode.next;
+        currentNode.next = node;
+        return;
+      }
+      currentNode = currentNode.next;
+    }
+  }
   includes(v) {
-    // console.log('hello from includes');
-    // if (value) {
-    //   return 'empty linked list';
-    // }
     let currentNode = this.head;
 
     while (currentNode) {
-      // console.log('hellooo from whileee');
-      // console.log('currentNode.value', currentNode.value);
-      // console.log('v', v);
-
       if (v == currentNode.value) {
-        // console.log('hello from iffffffffffff');
-
         return true;
       } else {
-        // console.log('currentNode.next', currentNode.next.next.next);
         currentNode = currentNode.next;
       }
     }
-    // console.log('hellooooo afttr while');
     return false;
   }
 
   tostring() {
     let str = "";
     let currentNode = this.head;
-    // console.log('this.head from tostring', this.head);
     while (currentNode) {
       str = str + `{${currentNode.value}} ->`;
 
