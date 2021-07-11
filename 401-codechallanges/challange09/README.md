@@ -4,7 +4,9 @@
 
 ## Challenge
 
-<!-- Description of the challenge -->
+## Mock Interviews
+
+- was with Hiba Salem
 
 **Palindrome method**
 
