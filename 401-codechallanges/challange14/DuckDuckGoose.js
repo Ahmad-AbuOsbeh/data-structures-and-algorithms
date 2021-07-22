@@ -1,12 +1,29 @@
 "use strict";
 const Node = require("./node");
 
-class Queue {
+class DuckDuckGoose {
   constructor() {
     this.front = null;
     this.back = null;
     this.length = 0;
   }
+  DuckDuckGoose(queue, k) {
+    let counter = 0;
+
+    let currentNode = queue.front;
+
+    while (currentNode.next) {
+      counter++;
+      if (counter != k) {
+        queue.enqueue(queue.dequeue());
+      } else {
+        queue.dequeue();
+        counter = 0;
+      }
+      currentNode = currentNode.next;
+    }
+  }
+
   enqueue(value) {
     let node = new Node(value);
 
@@ -51,5 +68,4 @@ class Queue {
     }
   }
 }
-
-module.exports = Queue;
+module.exports = DuckDuckGoose;
