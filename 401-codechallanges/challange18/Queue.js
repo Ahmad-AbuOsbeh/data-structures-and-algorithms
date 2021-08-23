@@ -19,6 +19,7 @@ class Queue {
       this.front = this.back;
       this.length++;
     }
+    return value;
   }
 
   dequeue() {
@@ -27,6 +28,7 @@ class Queue {
       let popedNode = lastNode;
       this.front = this.front.next;
       this.length--;
+      // console.log("popedNode", popedNode);
       return popedNode;
     } else {
       return null;
@@ -39,7 +41,7 @@ class Queue {
       peek = this.front.value;
       return peek;
     } else {
-      return "empty queue";
+      return null;
     }
   }
 
